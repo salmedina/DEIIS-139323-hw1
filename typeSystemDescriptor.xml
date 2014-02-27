@@ -18,8 +18,9 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>Parser.Questions</name>
-      <description/>
+      <name>Parser.Answers</name>
+      <description>Contains the list of answers given from the input file
+</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
@@ -30,14 +31,58 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>Grader.Questions</name>
+      <name>Grader.Answers</name>
       <description>This type extends the Parser.Questions by adding scores to the questions</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>Parser.Answers</supertypeName>
       <features>
         <featureDescription>
           <name>Score</name>
           <description>Contains the graded answers to the original question</description>
-          <rangeTypeName>uima.cas.NonEmptyFloatList</rangeTypeName>
+          <rangeTypeName>uima.cas.FloatArray</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>In.Input</name>
+      <description>Contains the text from the input file</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>Text</name>
+          <description>Contains the original text</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>Analyzer.Result</name>
+      <description>Contains the result according to the configuration of the CAS</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>N</name>
+          <description>Number of top answers considered to measure precision</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Precision</name>
+          <description>Precision obtained through the method
+Precision = OK_ANSWERS/TOP_N_ANSWERS</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>In.Configuration</name>
+      <description>The parameters to configure the CAS:
+1) N-Gram size
+</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>NGramSize</name>
+          <description>Size of N-Grams to compare</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
